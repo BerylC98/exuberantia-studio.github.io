@@ -1,2 +1,2 @@
 # exuberantia-studio.github.io
-Personal Studio Website
+A design and architecture studio founded by Runhao Cheng.
