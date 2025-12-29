@@ -16,6 +16,7 @@
       background: #fff;
     }
 
+    /* Main split layout */
     .wrap {
       height: 100%;
       display: grid;
@@ -68,6 +69,24 @@
       margin: 0;
     }
 
+    /* Center logo overlay (NOT inside .wrap) */
+    .logo-center {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      pointer-events: none; /* don't block clicks */
+    }
+
+    .logo-center img {
+      width: 96px;          /* desktop size */
+      height: auto;
+      opacity: 0.9;
+      mix-blend-mode: difference; /* desktop auto invert on black/white */
+    }
+
+    /* Mobile: stack vertically + safer logo rendering */
     @media (max-width: 900px) {
       .wrap {
         grid-template-columns: 1fr;
@@ -77,53 +96,41 @@
       .title {
         font-size: 36px;
       }
-      .logo-center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  pointer-events: none; /* 不挡左右点击 */
-}
 
-.logo-center img {
-  width: 96px;          /* 桌面尺寸 */
-  height: auto;
-  mix-blend-mode: difference; /* 黑白自动反色 */
-  opacity: 0.9;
-}
-
-/* 手机端缩小一点 */
-@media (max-width: 900px) {
-  .logo-center img {
-    width: 64px;
-  }
-}
+      .logo-center img {
+        width: 64px;                 /* mobile size */
+        mix-blend-mode: normal;      /* avoid mobile rendering bugs */
+        filter: drop-shadow(0 0 10px rgba(0,0,0,.35)); /* keep readable */
+      }
     }
   </style>
 </head>
 
 <body>
-
+  <!-- Logo overlay -->
   <div class="logo-center">
-    <img src="logo-white.png" alt="Exuberantia Studio Logo">
+    <img src="Logo_White.png" alt="Exuberantia Studio Logo">
   </div>
 
+  <!-- Split entry -->
   <main class="wrap">
-    <a class="left" href="YOUR_FRAMER_LINK" aria-label="Enter Playground">
+
+    <!-- Playground -->
+    <a class="left" href="https://exuberantiastudio.framer.website/playground" aria-label="Enter Playground">
       <div class="box">
         <h1 class="title">Playground</h1>
         <p class="sub">Comics · Illustration · Motion</p>
       </div>
     </a>
 
-    <a class="right" href="YOUR_FRAMER_LINK" aria-label="Enter Studio">
+    <!-- Studio -->
+    <a class="right" href="https://exuberantiastudio.framer.website/" aria-label="Enter Studio">
       <div class="box">
         <h1 class="title">Studio</h1>
         <p class="sub">Architecture · Visualization · Storytelling</p>
       </div>
     </a>
-  </main>
 
+  </main>
 </body>
 </html>
