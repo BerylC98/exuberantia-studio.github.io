@@ -77,12 +77,37 @@
       .title {
         font-size: 36px;
       }
+      .logo-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none; /* 不挡左右点击 */
+}
+
+.logo-center img {
+  width: 96px;          /* 桌面尺寸 */
+  height: auto;
+  mix-blend-mode: difference; /* 黑白自动反色 */
+  opacity: 0.9;
+}
+
+/* 手机端缩小一点 */
+@media (max-width: 900px) {
+  .logo-center img {
+    width: 64px;
+  }
+}
     }
   </style>
 </head>
 
 <body>
   <main class="wrap">
+    <div class="logo-center">
+  <img src="Logo_White.png" alt="Exuberantia Studio Logo">
+</div>
 
     <!-- Playground -->
     <a class="left" href="https://exuberantiastudio.framer.website/playground" aria-label="Enter Playground">
