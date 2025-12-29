@@ -16,7 +16,7 @@
       background: #fff;
     }
 
-    /* Main split layout */
+    /* ================= Layout ================= */
     .wrap {
       height: 100%;
       display: grid;
@@ -30,7 +30,7 @@
       place-items: center;
     }
 
-    /* Desktop order: Playground left, Studio right */
+    /* Desktop: Playground left / Studio right */
     .playground {
       background: #ffffff;
       color: #0f1115;
@@ -70,7 +70,33 @@
       margin: 0;
     }
 
-    /* Mobile: stack vertically + reorder */
+    /* ================= Center Logo ================= */
+    .logo-center {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      pointer-events: none; /* 不挡点击 */
+      display: grid;
+      place-items: center;
+    }
+
+    /* Desktop logo */
+    .logo-web {
+      display: block;
+      width: 96px;   /* 电脑端尺寸 */
+      height: auto;
+    }
+
+    /* Mobile logo (hidden by default) */
+    .logo-mob {
+      display: none;
+      width: 64px;   /* 手机端尺寸 */
+      height: auto;
+    }
+
+    /* ================= Mobile ================= */
     @media (max-width: 900px) {
       .wrap {
         grid-template-columns: 1fr;
@@ -89,16 +115,34 @@
       .title {
         font-size: 36px;
       }
+
+      /* Switch logo */
+      .logo-web {
+        display: none;
+      }
+
+      .logo-mob {
+        display: block;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- ===== Center Logo ===== -->
+  <div class="logo-center">
+    <!-- ⚠️ 文件名请与仓库中完全一致（大小写 + 后缀） -->
+    <img class="logo-web" src="Logo_Web.png" alt="Exuberantia Studio Logo">
+    <img class="logo-mob" src="Logo_Mob.png" alt="Exuberantia Studio Logo">
+  </div>
+
   <main class="wrap">
 
     <!-- Playground (desktop left / mobile bottom) -->
-    <a class="playground" href="https://exuberantiastudio.framer.website/playground" aria-label="Enter Playground">
+    <a class="playground"
+       href="https://exuberantiastudio.framer.website/playground"
+       aria-label="Enter Playground">
       <div class="box">
         <h1 class="title">Playground</h1>
         <p class="sub">Comics · Illustration · Motion</p>
@@ -106,7 +150,9 @@
     </a>
 
     <!-- Studio (desktop right / mobile top) -->
-    <a class="studio" href="https://exuberantiastudio.framer.website/" aria-label="Enter Studio">
+    <a class="studio"
+       href="https://exuberantiastudio.framer.website/"
+       aria-label="Enter Studio">
       <div class="box">
         <h1 class="title">Studio</h1>
         <p class="sub">Architecture · Visualization · Storytelling</p>
