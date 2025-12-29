@@ -30,12 +30,13 @@
       place-items: center;
     }
 
-    .left {
+    /* Desktop order: Playground left, Studio right */
+    .playground {
       background: #ffffff;
       color: #0f1115;
     }
 
-    .right {
+    .studio {
       background: #0f1115;
       color: #ffffff;
     }
@@ -69,93 +70,43 @@
       margin: 0;
     }
 
-    /* Center logo overlay (NOT inside .wrap) */
-    .logo-center {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      pointer-events: none; /* don't block clicks */
+    /* Mobile: stack vertically + reorder */
+    @media (max-width: 900px) {
+      .wrap {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+
+      /* Studio on top, Playground on bottom */
+      .studio {
+        order: 1;
+      }
+
+      .playground {
+        order: 2;
+      }
+
+      .title {
+        font-size: 36px;
+      }
     }
-
-    /* Two half-screen overlays so the logo is always readable */
-.logo-split{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 50vw;
-  z-index: 10;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-left{ left: 0; }
-.logo-right{ right: 0; }
-
-.logo-img{
-  width: 96px;
-  height: auto;
-  opacity: 0.9;
-}
-
-/* Left side is white background -> use black logo */
-.logo-black{
-  filter: invert(1); /* turns white transparent logo into black */
-}
-
-/* Mobile: top/bottom split */
-@media (max-width: 900px){
-  .logo-split{
-    width: 100vw;
-    height: 50vh;
-    top: auto;
-    bottom: auto;
-    left: 0;
-    right: 0;
-  }
-  .logo-left{
-    top: 0;
-    bottom: auto;
-  }
-  .logo-right{
-    top: auto;
-    bottom: 0;
-  }
-  .logo-img{
-    width: 64px;
-  }
-}
-
   </style>
 </head>
 
 <body>
-  <!-- Logo overlay -->
-  <!-- Center logo overlays (split-safe) -->
-<div class="logo-split logo-left">
-  <img class="logo-img logo-black" src="Logo-White.png" alt="Exuberantia Studio Logo">
-</div>
 
-<div class="logo-split logo-right">
-  <img class="logo-img logo-white" src="Logo-White.png" alt="Exuberantia Studio Logo">
-</div>
-
-  <!-- Split entry -->
   <main class="wrap">
 
-    <!-- Playground -->
-    <a class="left" href="https://exuberantiastudio.framer.website/playground" aria-label="Enter Playground">
+    <!-- Playground (desktop left / mobile bottom) -->
+    <a class="playground" href="YOUR_FRAMER_LINK" aria-label="Enter Playground">
       <div class="box">
         <h1 class="title">Playground</h1>
         <p class="sub">Comics · Illustration · Motion</p>
       </div>
     </a>
 
-    <!-- Studio -->
-    <a class="right" href="https://exuberantiastudio.framer.website/" aria-label="Enter Studio">
+    <!-- Studio (desktop right / mobile top) -->
+    <a class="studio" href="YOUR_FRAMER_LINK" aria-label="Enter Studio">
       <div class="box">
         <h1 class="title">Studio</h1>
         <p class="sub">Architecture · Visualization · Storytelling</p>
@@ -163,5 +114,6 @@
     </a>
 
   </main>
+
 </body>
 </html>
