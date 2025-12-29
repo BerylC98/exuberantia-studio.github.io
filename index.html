@@ -79,38 +79,69 @@
       pointer-events: none; /* don't block clicks */
     }
 
-    .logo-center img {
-      width: 96px;          /* desktop size */
-      height: auto;
-      opacity: 0.9;
-      mix-blend-mode: difference; /* desktop auto invert on black/white */
-    }
+    /* Two half-screen overlays so the logo is always readable */
+.logo-split{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50vw;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    /* Mobile: stack vertically + safer logo rendering */
-    @media (max-width: 900px) {
-      .wrap {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-      }
+.logo-left{ left: 0; }
+.logo-right{ right: 0; }
 
-      .title {
-        font-size: 36px;
-      }
+.logo-img{
+  width: 96px;
+  height: auto;
+  opacity: 0.9;
+}
 
-      .logo-center img {
-        width: 64px;                 /* mobile size */
-        mix-blend-mode: normal;      /* avoid mobile rendering bugs */
-        filter: drop-shadow(0 0 10px rgba(0,0,0,.35)); /* keep readable */
-      }
-    }
+/* Left side is white background -> use black logo */
+.logo-black{
+  filter: invert(1); /* turns white transparent logo into black */
+}
+
+/* Mobile: top/bottom split */
+@media (max-width: 900px){
+  .logo-split{
+    width: 100vw;
+    height: 50vh;
+    top: auto;
+    bottom: auto;
+    left: 0;
+    right: 0;
+  }
+  .logo-left{
+    top: 0;
+    bottom: auto;
+  }
+  .logo-right{
+    top: auto;
+    bottom: 0;
+  }
+  .logo-img{
+    width: 64px;
+  }
+}
+
   </style>
 </head>
 
 <body>
   <!-- Logo overlay -->
-  <div class="logo-center">
-    <img src="Logo_White.png" alt="Exuberantia Studio Logo">
-  </div>
+  <!-- Center logo overlays (split-safe) -->
+<div class="logo-split logo-left">
+  <img class="logo-img logo-black" src="Logo-White.png" alt="Exuberantia Studio Logo">
+</div>
+
+<div class="logo-split logo-right">
+  <img class="logo-img logo-white" src="Logo-White.png" alt="Exuberantia Studio Logo">
+</div>
 
   <!-- Split entry -->
   <main class="wrap">
