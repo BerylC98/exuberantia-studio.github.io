@@ -4,34 +4,102 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Exuberantia Studio</title>
+
+  <!-- Urbanist font -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
-    .wrap{height:100%;display:grid;grid-template-columns:1fr 1fr;}
-    a{display:grid;place-items:center;text-decoration:none;color:inherit;}
-    .left{background:#fff;}
-    .right{background:#0f1115;color:#fff;}
-    .box{padding:40px;border-radius:18px;max-width:420px;text-align:center;transition:transform .15s ease, opacity .15s ease;}
-    a:hover .box{transform:translateY(-2px);opacity:.92;}
-    .title{font-size:44px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px;}
-    .sub{margin:0;opacity:.75}
-    @media (max-width: 900px){.wrap{grid-template-columns:1fr;grid-template-rows:1fr 1fr;}}
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+    }
+
+    .wrap {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      display: grid;
+      place-items: center;
+    }
+
+    .left {
+      background: #ffffff;
+      color: #0f1115;
+    }
+
+    .right {
+      background: #0f1115;
+      color: #ffffff;
+    }
+
+    .box {
+      max-width: 420px;
+      padding: 48px;
+      text-align: center;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    a:hover .box {
+      transform: translateY(-3px);
+      opacity: 0.9;
+    }
+
+    .title {
+      font-size: 48px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+
+    .sub {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .wrap {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+
+      .title {
+        font-size: 36px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <main class="wrap">
-    <a class="left" href="https://exuberantiastudio.framer.website/playground"Enter Playground">
+
+    <!-- Playground -->
+    <a class="left" href="https://exuberantiastudio.framer.website/playground" aria-label="Enter Playground">
       <div class="box">
         <h1 class="title">Playground</h1>
-        <p class="sub">comics • illustration • motion</p>
+        <p class="sub">Comics · Illustration · Motion</p>
       </div>
     </a>
 
+    <!-- Studio -->
     <a class="right" href="https://exuberantiastudio.framer.website/" aria-label="Enter Studio">
       <div class="box">
         <h1 class="title">Studio</h1>
-        <p class="sub">architecture • visualization • storytelling</p>
+        <p class="sub">Architecture · Visualization · Storytelling</p>
       </div>
     </a>
+
   </main>
 </body>
 </html>
